@@ -8,7 +8,7 @@ STEP 1: make a `TEST DIRECTORY` and put the `pyco.py` there
 STEP 2: make `hello_worlds_maker.py` in that directory with your editor
 
 ```
-# hewllo_worlds_maker.py
+# hello_worlds_maker.py
 
 import pyco
 code = pyco.Pyco()
@@ -20,17 +20,17 @@ code.add('print("world!")')
 code.escape('f') # escape function
 code.add('if __name__ == "__main_":')
 code.add('hello_worlds()')
-code.make('hello_world.py')
+code.make('hello_worlds.py')
 ```
 STEP 3 : run your code
 
 ```
-$ python hello_worlds.py
+$ python hello_worlds_maker.py
 ```
-you will see `hello_world.py` in that directory
+you will see `hello_worlds.py` in that directory
 
 ```
-# hello_world.py
+# hello_worlds.py
 
 def hello_worlds():
     for i in range(5):
