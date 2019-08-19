@@ -3,9 +3,9 @@ when you need to create python script by python, this will help you
 
 ### example 1 
 
-STEP 1: make a TEST DIRECTORY and put the `pyco.py` there
+STEP 1: make a `TEST DIRECTORY` and put the `pyco.py` there
 
-STEP 2: make `hello_worlds_maker.py` with your editor
+STEP 2: make `hello_worlds_maker.py` in that directory with your editor
 
 ```
 # hewllo_worlds_maker.py
