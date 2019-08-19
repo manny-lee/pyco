@@ -1,6 +1,6 @@
 # pyco
 Whhen you need to create python script by python, this will help you.
-* It makes indent in your script automatically.
+* It makes indent for your python script automatically.
 * you can get out of code-block, function, or class very simply.
 * It makes blank lines between function or class automatically.
 
