@@ -18,7 +18,7 @@ code.add('print("Hello!")')
 code.escape('b') # escape block
 code.add('print("world!")')
 code.escape('f') # escape function
-code.add('if __name__ == "__main_":')
+code.add('if __name__ == "__main__":')
 code.add('hello_worlds()')
 code.make('hello_worlds.py')
 ```
