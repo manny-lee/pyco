@@ -2,7 +2,7 @@
 Whhen you need to create python script by python, this will help you.
 * It makes indent in your script automatically.
 * you can get out of code-block, function, or class very simply.
-* It make blank line between function or class automatically.
+* It makes blank lines between function or class automatically.
 
 
 ### example 1 
