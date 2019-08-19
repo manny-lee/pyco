@@ -37,7 +37,7 @@ def hello_worlds():
         print("Hello!")
     print("world!")    
 
-if __name__ == "__main_":
+if __name__ == "__main__":
     hello_worlds()
 ```
 
