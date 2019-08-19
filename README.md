@@ -1,7 +1,7 @@
 # pyco
-when you need to create python script by python, this will help you.
+Whhen you need to create python script by python, this will help you.
 It will indent your script automatically.
-And, you can get out of code-block, function, or class very simply.
+you can get out of code-block, function, or class very simply.
 
 
 ### example 1 
