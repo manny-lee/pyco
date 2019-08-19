@@ -12,6 +12,8 @@ STEP 2: make `hello_worlds_maker.py` in that directory with your editor
 
 import pyco
 code = pyco.Pyco()
+code.add('# hello_worlds.py')
+codd.addline()
 code.add('def hello_worlds():')
 code.add('for i in range(5):')
 code.add('print("Hello!")')
