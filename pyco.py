@@ -1,10 +1,12 @@
+import re
+
 class Pyco():
 
-    currIndentLevel = 0
-    boxes = ['c','f','b'] # class, function, block
+    boxes = 'cfb' # class, function, block
 
     def __init__(self, fileType='unix',spnum=4):
         self.code = list()
+        self.indentLevel = 0
         self.setFileType(fileType)
         self.setIndent2space(spnum)
 
@@ -17,15 +19,22 @@ class Pyco():
         if spnum:
             self.indent2space = spnum
 
+    def dent(self):
+        self.indentLevel = self.indentLevel - 1
+
+    def indent(self):
+        self.indentLevel = self.indentLevel + 1
+
     def add(self, strline):
         '''
         add one string line to code
         '''
         strline = strline.strip()
-        self.code.append((strline, self.currIndentLevel))
-        box = self.getBoxTypeByFirstLine(strline)
-        if box in self.boxes:
-            self.currIndentLevel = self.currIndentLevel + 1
+        self.code.append((strline, self.indentLevel))
+        box = self.getBoxTypeByStrLine(strline)
+        if box is not None:
+            if box in self.boxes:
+                self.indentLevel = self.indentLevel + 1
 
     def addline(self):
         '''
@@ -33,39 +42,39 @@ class Pyco():
         '''
         self.code.append(('',0));
 
-    def getBoxTypeByFirstLine(self,strline):
+    def getBoxTypeByStrLine(self,strline):
         if strline[0:4] == 'class ':
             return 'c'
         elif strline[0:4] == 'def ':
             return 'f'
-        elif strline[-1:] == ':':
+        elif strline[-1:] in ':{([':
             return 'b'
         else:
             return None
 
-    def escape(self,box='b'):
+    def escape(self,boxtype='b',closer=None):
+
         '''
         escape from box such as class (c), function (f), or block (b)
         '''
-        reversedCode = sorted(self.code, reverse=True)
-        if box in self.boxes:
-            for strline, indentLevel in reversedCode:
-                strline = strline.strip()
-                if box == self.getBoxTypeByFirstLine(strline):
-                    self.currIndentLevel = indentLevel
-                    if box == 'c':
-                        self.addline()
-                        self.addline()
-                    elif box == 'f':
-                        self.addline()
-                    break
 
-    def escadd(self,box,strline):
-        '''
-        escape from box and add a string line
-        '''
-        self.escape(box)
-        self.add(strline)
+        if boxtype in self.boxes:
+            p = re.compile('[\}\)\]]\s?,?')
+
+            for strline, indentLevel in reversed(self.code):
+                strline = strline.strip()
+                if strline:
+                    if (boxtype == self.getBoxTypeByStrLine(strline)) and (self.indentLevel > indentLevel):
+                        self.indentLevel = indentLevel
+                        if closer is not None:
+                            if closer == p.match(closer).group():
+                                self.add(closer)
+                        if boxtype == 'c':
+                            self.addline()
+                            self.addline()
+                        elif boxtype == 'f':
+                            self.addline()
+                        break
 
     def get(self):
         '''
