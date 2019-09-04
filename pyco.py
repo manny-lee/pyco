@@ -43,7 +43,13 @@ class Pyco():
         self.code.append(('',0));
 
     def getBoxTypeByStrLine(self,strline):
-        if strline[0:4] == 'class ':
+        if strline[0:3] in ['"""',"'''"]:
+            return None
+        elif strline[-3:] in ['"""',"'''"]:
+            return None
+        elif strline[0:1] == '#':
+            return None        
+        elif strline[0:6] == 'class ':
             return 'c'
         elif strline[0:4] == 'def ':
             return 'f'
