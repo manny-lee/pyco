@@ -1,4 +1,4 @@
-# pyco -- The Python Code Generator
+# pyco -- make python scrript with python
 When you need to create python script by python, this will help you.
 * It makes indent for your python script automatically.
 * you can get out of code-block, function, or class very simply.
